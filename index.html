@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>jQuery autocompleter</title>
+    <link rel="stylesheet" type="text/css" href="src/jquery.autocomplete.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="src/jquery.autocomplete.js"></script>
+<script type="text/javascript">
+$(function() {
+    $("#ac6").autocomplete('http://spiderhub.ellietrac.com/api/v1/search?size=50', {
+        remoteDataType: 'json',
+        processData: function(data) {
+            //alert(data[0].address);
+			var i, processed = [];
+			for (i=0; i < data.length; i++) {
+				processed.push([data[i].address]);
+			}
+			return processed;
+        }
+    });
+});
+</script>
+</head>
+
+<body>
+
+   
+
+    <h2>Demo</h2>
+
+    
+    <form>
+        <input type="text" id="ac6">
+    </form>
+
+   
+</body>
+
+</html>
